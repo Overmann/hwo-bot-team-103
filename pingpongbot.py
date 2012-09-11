@@ -5,6 +5,7 @@ import logging
 import socket
 import sys
 import random
+import time
 
 
 class JsonOverTcp(object):
@@ -56,6 +57,7 @@ class PingPongBot(object):
     def _make_move(self, data):
         control = random.random() * 2 - 1
         self._connection.send({'msgType': 'changeDir', 'data': control})
+        time.sleep(0.1)  # prevent flooding commands
 
     def _game_over(self, data):
         self._log.info('Game ended. Winner: %s' % data)
