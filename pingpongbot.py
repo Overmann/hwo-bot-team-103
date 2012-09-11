@@ -4,6 +4,7 @@ import json
 import logging
 import socket
 import sys
+import random
 
 
 class JsonOverTcp(object):
@@ -53,7 +54,8 @@ class PingPongBot(object):
         self._log.info('Game started: %s vs. %s' % (data[0], data[1]))
 
     def _make_move(self, data):
-        self._connection.send({'msgType': 'changeDir', 'data': -1.0})
+        control = random.random() * 2 - 1
+        self._connection.send({'msgType': 'changeDir', 'data': control})
 
     def _game_over(self, data):
         self._log.info('Game ended. Winner: %s' % data)
