@@ -55,7 +55,14 @@ class PingPongBot(object):
         self._log.info('Game started: %s vs. %s' % (data[0], data[1]))
 
     def _make_move(self, data):
-        control = random.random() * 2 - 1
+        ball = data['ball']['pos']['y']
+        paddle = data['left']['y'] + data['conf']['paddleHeight']/2
+
+        if (ball < paddle):
+          control = -1
+        else:
+          control = 1
+
         self._connection.send({'msgType': 'changeDir', 'data': control})
         time.sleep(0.1)  # prevent flooding commands
 
