@@ -1,5 +1,5 @@
 #!/bin/bash
-source /usr/local/bin/virtualenvwrapper.sh
+source virtualenvwrapper.sh
 env_name=pingpongbot
 if [ ! -d ~/.virtualenvs/$env_name ]; then
     mkvirtualenv $env_name
