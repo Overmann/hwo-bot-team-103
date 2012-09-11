@@ -1,2 +1,5 @@
 game.log
-
+*.swp
+*.swo
+*.pyc
+.pids
